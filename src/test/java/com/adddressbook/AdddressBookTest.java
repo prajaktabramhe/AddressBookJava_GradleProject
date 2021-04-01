@@ -21,7 +21,6 @@ public class AdddressBookTest
                    "prajakta@gmail.com",
                    8149240833L,
                    440034
-
                );
 
         Contact contact2 = new Contact
@@ -119,7 +118,6 @@ public class AdddressBookTest
                         "ekta@gmail.com",
                         8149420833L,
                         635241
-
                 );
 
         Contact contact4 = new Contact
@@ -144,7 +142,6 @@ public class AdddressBookTest
                         "sneha@gmail.com",
                         8149240844L,
                         663322
-
                 );
 
         AdddressBookIO addressBook = new AdddressBookIO();
