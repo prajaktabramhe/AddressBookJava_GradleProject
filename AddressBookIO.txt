@@ -1,0 +1,10 @@
+Contact [firstName=Prajakta, lastName=Bramhe, Address=Ashtyavinayak colony, city=Nagpur, state=Maharashtra, pincode=452365, MobileNo=8149240833]
+
+Contact [firstName=Payal, lastName=Raut, Address=om colony, city=Pune, state=Maharashtra, pincode=748563, MobileNo=8149240833]
+
+Contact [firstName=Ekta, lastName=Sharma, Address=ram colony, city=bhopal, state=UP, pincode=635241, MobileNo=8149420833]
+
+Contact [firstName=Puja, lastName=Thakre, Address=Gopal colony, city=Amravati, state=MP, pincode=887752, MobileNo=9149240833]
+
+Contact [firstName=Sneha, lastName=Shende, Address=Ashtyavinayak colony, city=Akola, state=Telangana, pincode=663322, MobileNo=8149240844]
+
