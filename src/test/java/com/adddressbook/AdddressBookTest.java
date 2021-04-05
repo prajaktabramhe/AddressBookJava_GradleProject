@@ -2,7 +2,10 @@ package com.adddressbook;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdddressBookTest
 {
@@ -153,5 +156,82 @@ public class AdddressBookTest
         boolean isRead = addressBook.addContact(contact);
             Assertions.assertTrue(isRead);
 
+    }
+
+    @Test
+    public void givenCSVFile_WhenRead_ShouldReturn_True() throws IOException
+    {
+        OpenCSVFile openCSVReader = new OpenCSVFile();
+        Boolean result = openCSVReader.readCSV();
+        Assertions.assertTrue(result);
+    }
+
+
+    @Test
+    public void givenCSVFile_WhenWritten_ShouldReturn_True() throws IOException {
+        String ADDRESS_BOOK_CSV_FILE_PATH = ".src/test/resources/AddressBook.csv";
+        List<String[]> contacts = new ArrayList<>();
+        String[] contact1 =
+                {
+                "Prajakta",
+                "Bramhe",
+                "Ashtyavinayak colony",
+                "Nagpur",
+                "Maharashtra",
+                "prajakta@gmail.com",
+                "8149240733",
+                "698574"
+    };
+
+        String[] contact2 = {
+                "Ritesh",
+                "Nirmalkar",
+                "Shakti nagar",
+                "Umred",
+                "Maharashtra",
+                "ritesh@gmail.com",
+                "8149240873",
+                "001144"
+        };
+        String[] contact3 = {
+                "Ritesh",
+                "Nirmalkar",
+                "Shakti nagar",
+                "Umred",
+                "Maharashtra",
+                "ritesh@gmail.com",
+                "8149240873",
+                "001144"
+        };
+        String[] contact4 = {
+                "Rashmi",
+                "kale",
+                "Abhyankar nagar",
+                "baitul",
+                "MP",
+                "ritesh@gmail.com",
+                "8149240873",
+                "001144"
+        };
+
+        String[] contact5 = {
+                "Amol",
+                "Zade",
+                "Krishna nagar",
+                "chennai",
+                "TamilNadu",
+                "amol@gmail.com",
+                "8928397674",
+                "050403"
+        };
+
+        contacts.add(contact1);
+        contacts.add(contact2);
+        contacts.add(contact1);
+        contacts.add(contact2);
+        contacts.add(contact1);
+        OpenCSVFile  openCSVReader = new OpenCSVFile();
+        Boolean result = openCSVReader.writeCSV(contacts);
+        Assertions.assertTrue(result);
     }
 }
