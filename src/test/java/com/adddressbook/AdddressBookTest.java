@@ -184,12 +184,12 @@ public class AdddressBookTest
     };
 
         String[] contact2 = {
-                "Ritesh",
-                "Nirmalkar",
+                "Arun",
+                "Gawande",
                 "Shakti nagar",
-                "Umred",
-                "Maharashtra",
-                "ritesh@gmail.com",
+                "Bengluru",
+                "Karnatak",
+                "arun@gmail.com",
                 "8149240873",
                 "001144"
         };
