@@ -154,7 +154,7 @@ public class AdddressBookTest
         contact.add(contact4);
         contact.add(contact5);
         boolean isRead = addressBook.addContact(contact);
-            Assertions.assertTrue(isRead);
+        Assertions.assertTrue(isRead);
 
     }
 
@@ -168,7 +168,8 @@ public class AdddressBookTest
 
 
     @Test
-    public void givenCSVFile_WhenWritten_ShouldReturn_True() throws IOException {
+    public void givenCSVFile_WhenWritten_ShouldReturn_True() throws IOException
+    {
         String ADDRESS_BOOK_CSV_FILE_PATH = ".src/test/resources/AddressBook.csv";
         List<String[]> contacts = new ArrayList<>();
         String[] contact1 =
@@ -227,11 +228,42 @@ public class AdddressBookTest
 
         contacts.add(contact1);
         contacts.add(contact2);
-        contacts.add(contact1);
-        contacts.add(contact2);
-        contacts.add(contact1);
+        contacts.add(contact3);
+        contacts.add(contact4);
+        contacts.add(contact5);
         OpenCSVFile  openCSVReader = new OpenCSVFile();
         Boolean result = openCSVReader.writeCSV(contacts);
         Assertions.assertTrue(result);
     }
+
+
+    @Test
+    public void givenObject_WhenStoredInTheJson_ShouldReturn_TRUE()
+    {
+       Contact contactinfo = new Contact
+               (
+                     "Prajakta",
+                    "Bramhe",
+                    "Ashtyavinayak colony",
+                    "Nagpur",
+                    "Maharashtra",
+                    "prajakta14bramhe@gmail.com",
+                   8149240833L,
+                    440034
+               );
+
+        JsonFile jsonfile = new JsonFile();
+        boolean isAdded = jsonfile.jsonWriteData(contactinfo);
+        Assertions.assertTrue(isAdded);
+    }
+
+    @Test
+    public void givenJsonFile_WhenReadData_ShouldReturn_TRUE()
+    {
+        JsonFile jsonfile = new JsonFile();
+        boolean isRead = jsonfile.jsonReadData();
+        Assertions.assertTrue(isRead);
+    }
+
+
 }
