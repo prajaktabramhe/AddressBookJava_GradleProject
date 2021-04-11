@@ -1,6 +1,8 @@
 com/adddressbook/AdddressBookIO.java
  com.adddressbook.AdddressBookIO
-com/adddressbook/Contact.java
- com.adddressbook.Contact
+com/adddressbook/JsonFile.java
+ com.adddressbook.JsonFile
 com/adddressbook/OpenCSVFile.java
  com.adddressbook.OpenCSVFile
+com/adddressbook/Contact.java
+ com.adddressbook.Contact

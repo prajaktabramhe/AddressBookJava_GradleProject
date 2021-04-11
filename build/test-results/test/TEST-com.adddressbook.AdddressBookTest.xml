@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-05T08:44:57" hostname="DESKTOP-0QBG6NF" time="0.531">
+<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-11T18:38:56" hostname="DESKTOP-0QBG6NF" time="0.093">
   <properties/>
-  <testcase name="givenCSVFile_WhenWritten_ShouldReturn_True()" classname="com.adddressbook.AdddressBookTest" time="0.531"/>
+  <testcase name="givenObject_WhenStoredInTheJson_ShouldReturn_TRUE()" classname="com.adddressbook.AdddressBookTest" time="0.093"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
