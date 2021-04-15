@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-11T18:38:56" hostname="DESKTOP-0QBG6NF" time="0.093">
+<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-15T15:14:11" hostname="DESKTOP-0QBG6NF" time="0.332">
   <properties/>
-  <testcase name="givenObject_WhenStoredInTheJson_ShouldReturn_TRUE()" classname="com.adddressbook.AdddressBookTest" time="0.093"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="givenAddressBookContactsInDB_WhenRetrieved_ShouldMatchContactsCount()" classname="com.adddressbook.AdddressBookTest" time="0.332"/>
+  <system-out><![CDATA[Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@12d398bc
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
