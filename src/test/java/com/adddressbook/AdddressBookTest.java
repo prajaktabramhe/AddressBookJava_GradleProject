@@ -265,5 +265,11 @@ public class AdddressBookTest
         Assertions.assertTrue(isRead);
     }
 
-
+    @Test
+    public void givenAddressBookContactsInDB_WhenRetrieved_ShouldMatchContactsCount()
+    {
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        List<Contact> addressBookContactList = addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
+        Assertions.assertEquals(8,addressBookContactList.size());
+    }
 }
