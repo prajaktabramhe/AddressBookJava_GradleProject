@@ -8,10 +8,10 @@ public class Contact
     String city;
     String state;
     String email;
-    long mobileNo;
+    String mobileNo;
     int zip;
 
-    public Contact(String firstName, String lastName, String address, String city, String state, String email, long mobileNo, int zip)
+    public Contact(String firstName, String lastName, String address, String city, String state, String email, String mobileNo, int zip)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,11 +69,11 @@ public class Contact
     {
         this.email = email;
     }
-    public long getMobileNo()
+    public String getMobileNo()
     {
         return mobileNo;
     }
-    public void setMobileNo(long mobileNo)
+    public void setMobileNo(String mobileNo)
     {
         this.mobileNo = mobileNo;
     }
