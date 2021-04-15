@@ -301,4 +301,12 @@ public class AdddressBookTest
                 addressBookSystem.countPeopleFromGivenCity(AddressBookSystem.IOService.DB_IO, "Nagpur");
         Assertions.assertEquals(2, addressBookDataList.size());
     }
+    @Test
+    public void givenState_WhenRetrieved_ShouldMatchEntryCountBYState()
+    {
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        List<Contact> addressBookDataList =
+                addressBookSystem.countPeopleFromGivenState(AddressBookSystem.IOService.DB_IO, "UP");
+        Assertions.assertEquals(2, addressBookDataList.size());
+    }
 }

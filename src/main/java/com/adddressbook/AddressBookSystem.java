@@ -49,11 +49,17 @@ public class AddressBookSystem
         return addressBookDataList.get(0).equals(getEmployeePayrollData(name));
     }
 
-    private Contact getEmployeePayrollData(String name) {
+    private Contact getEmployeePayrollData(String name)
+    {
         return this.addressBookContactlist.stream().filter(employeePayrollDataItem -> employeePayrollDataItem.firstName.equals(name)).findFirst().orElse(null);
     }
     public List<Contact> countPeopleFromGivenCity(IOService ioService, String city)
     {
         return addressBookDBSystem.countPeopleFromGivenCity(city);
+    }
+
+    public List<Contact> countPeopleFromGivenState(IOService ioService, String state)
+    {
+        return addressBookDBSystem.countPeopleFromGivenState(state);
     }
 }
