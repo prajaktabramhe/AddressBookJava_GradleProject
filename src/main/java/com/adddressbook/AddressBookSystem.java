@@ -52,4 +52,8 @@ public class AddressBookSystem
     private Contact getEmployeePayrollData(String name) {
         return this.addressBookContactlist.stream().filter(employeePayrollDataItem -> employeePayrollDataItem.firstName.equals(name)).findFirst().orElse(null);
     }
+    public List<Contact> countPeopleFromGivenCity(IOService ioService, String city)
+    {
+        return addressBookDBSystem.countPeopleFromGivenCity(city);
+    }
 }

@@ -36,6 +36,7 @@ public class AdddressBookTest
                     "payal@gmail.com",
                     "8149240833",
                     440034
+
                );
 
         Contact contact3 = new Contact
@@ -48,6 +49,7 @@ public class AdddressBookTest
                     "ekta@gmail.com",
                     "8149420833",
                     448800
+
                 );
 
         Contact contact4 = new Contact
@@ -60,6 +62,7 @@ public class AdddressBookTest
                     "Puja@gmail.com",
                     "9149240833",
                     778899
+
                );
 
         Contact contact5 = new Contact
@@ -72,6 +75,7 @@ public class AdddressBookTest
                     "sneha@gmail.com",
                     "8149240844",
                     885522
+
                );
 
         AdddressBookIO addressBook = new AdddressBookIO();
@@ -97,6 +101,7 @@ public class AdddressBookTest
                         "prajakta@gmail.com",
                         "8149240833",
                         452365
+
                 );
 
         Contact contact2 = new Contact
@@ -109,6 +114,7 @@ public class AdddressBookTest
                         "payal@gmail.com",
                         "8149240833",
                         748563
+
                 );
 
         Contact contact3 = new Contact
@@ -121,6 +127,7 @@ public class AdddressBookTest
                         "ekta@gmail.com",
                         "8149420833",
                         635241
+
                 );
 
         Contact contact4 = new Contact
@@ -133,6 +140,7 @@ public class AdddressBookTest
                         "Puja@gmail.com",
                         "9149240833",
                         887752
+
                 );
 
         Contact contact5 = new Contact
@@ -145,6 +153,7 @@ public class AdddressBookTest
                         "sneha@gmail.com",
                         "8149240844",
                         663322
+
                 );
 
         AdddressBookIO addressBook = new AdddressBookIO();
@@ -249,7 +258,8 @@ public class AdddressBookTest
                     "Maharashtra",
                     "prajakta14bramhe@gmail.com",
                    "8149240833",
-                    440034
+                       440034
+
                );
 
         JsonFile jsonfile = new JsonFile();
@@ -276,10 +286,19 @@ public class AdddressBookTest
     @Test
     public void givenNewMobileNumberForEmployee_WhenUpdated_ShouldSyncWithDB()
     {
-        AddressBookSystem addressBookService = new AddressBookSystem();
-        List<Contact> personList = addressBookService.readAddressBookData(AddressBookSystem.IOService.DB_IO);
-        addressBookService.updateMobileNumber("Prajakta","7083261675");
-        boolean result = addressBookService.checkAddressBookInSyncWithDB("Prajakta");
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        List<Contact> personList = addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
+        addressBookSystem.updateMobileNumber("Prajakta","7083261675");
+        boolean result = addressBookSystem.checkAddressBookInSyncWithDB("Prajakta");
         Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenState_WhenRetrieved_ShouldMatchEntryCount()
+    {
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        List<Contact> addressBookDataList =
+                addressBookSystem.countPeopleFromGivenCity(AddressBookSystem.IOService.DB_IO, "Nagpur");
+        Assertions.assertEquals(2, addressBookDataList.size());
     }
 }

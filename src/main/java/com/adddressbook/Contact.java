@@ -11,6 +11,7 @@ public class Contact
     String mobileNo;
     int zip;
 
+
     public Contact(String firstName, String lastName, String address, String city, String state, String email, String mobileNo, int zip)
     {
         this.firstName = firstName;
@@ -21,6 +22,7 @@ public class Contact
         this.email = email;
         this.mobileNo = mobileNo;
         this.zip = zip;
+
     }
     public String getFirstName()
     {
@@ -85,9 +87,11 @@ public class Contact
     {
         this.zip = zip;
     }
+
     public String toString()
+
     {
         return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", Address="+address+", city=" + city
-                + ", state=" + state + ", pincode=" + zip + ", MobileNo=" + mobileNo + "]" + "\n";
+                + ", state=" + state + ", pincode=" + zip + ", MobileNo=" + mobileNo +  "]" + "\n";
     }
 }

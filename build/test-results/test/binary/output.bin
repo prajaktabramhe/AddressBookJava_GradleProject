@@ -1,6 +1,2 @@
 VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@403a1fb3
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@3d11d65f
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@2407110e
+DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@3b8950b8

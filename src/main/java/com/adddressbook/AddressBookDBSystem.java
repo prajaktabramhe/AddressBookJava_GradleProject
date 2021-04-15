@@ -62,6 +62,7 @@ public class AddressBookDBSystem
                 int zip = resultSet.getInt("zip");
                 String mobileNo = resultSet.getString("PhoneNumber");
                 String email = resultSet.getString("email");
+
                 addressBookContactArrayList.add(new Contact(firstName, lastName, address, city, state, email, mobileNo, zip));
             }
         }catch (SQLException e)
@@ -103,7 +104,8 @@ public class AddressBookDBSystem
         return personList;
     }
 
-    private void prepareStatementForAddressBookData() {
+    private void prepareStatementForAddressBookData()
+    {
         try {
             Connection connection = this.getConnection();
             String sql = "SELECT * FROM address_book_service WHERE Name = ?";
@@ -111,5 +113,26 @@ public class AddressBookDBSystem
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private List<Contact> getAddressBookDataUsingDB(String sql)
+    {
+        List<Contact> addressBookList = new ArrayList<>();
+        try (Connection connection = this.getConnection())
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            addressBookList = this.getAddressbookContactData(resultSet);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return addressBookList;
+    }
+    public List<Contact> countPeopleFromGivenCity(String city)
+    {
+        String sql = String.format("SELECT * FROM address_book_service WHERE city =  '%s';", city);
+        return this.getAddressBookDataUsingDB(sql);
     }
 }
