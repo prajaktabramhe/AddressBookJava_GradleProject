@@ -22,7 +22,7 @@ public class AdddressBookTest
                    "Nagpur" ,
                    "Maharashtra",
                    "prajakta@gmail.com",
-                   8149240833L,
+                   "8149240833",
                    440034
                );
 
@@ -34,7 +34,7 @@ public class AdddressBookTest
                     "Pune" ,
                     "Maharashtra",
                     "payal@gmail.com",
-                    8149240833L,
+                    "8149240833",
                     440034
                );
 
@@ -46,7 +46,7 @@ public class AdddressBookTest
                     "bhopal" ,
                     "UP",
                     "ekta@gmail.com",
-                    8149420833L,
+                    "8149420833",
                     448800
                 );
 
@@ -58,7 +58,7 @@ public class AdddressBookTest
                     "Amravati" ,
                     "MP",
                     "Puja@gmail.com",
-                    9149240833L,
+                    "9149240833",
                     778899
                );
 
@@ -70,7 +70,7 @@ public class AdddressBookTest
                     "Akola" ,
                     "Telangana",
                     "sneha@gmail.com",
-                    8149240844L,
+                    "8149240844",
                     885522
                );
 
@@ -95,7 +95,7 @@ public class AdddressBookTest
                         "Nagpur",
                         "Maharashtra",
                         "prajakta@gmail.com",
-                        8149240833L,
+                        "8149240833",
                         452365
                 );
 
@@ -107,7 +107,7 @@ public class AdddressBookTest
                         "Pune",
                         "Maharashtra",
                         "payal@gmail.com",
-                        8149240833L,
+                        "8149240833",
                         748563
                 );
 
@@ -119,7 +119,7 @@ public class AdddressBookTest
                         "bhopal",
                         "UP",
                         "ekta@gmail.com",
-                        8149420833L,
+                        "8149420833",
                         635241
                 );
 
@@ -131,7 +131,7 @@ public class AdddressBookTest
                         "Amravati",
                         "MP",
                         "Puja@gmail.com",
-                        9149240833L,
+                        "9149240833",
                         887752
                 );
 
@@ -143,7 +143,7 @@ public class AdddressBookTest
                         "Akola",
                         "Telangana",
                         "sneha@gmail.com",
-                        8149240844L,
+                        "8149240844",
                         663322
                 );
 
@@ -248,7 +248,7 @@ public class AdddressBookTest
                     "Nagpur",
                     "Maharashtra",
                     "prajakta14bramhe@gmail.com",
-                   8149240833L,
+                   "8149240833",
                     440034
                );
 
@@ -271,5 +271,15 @@ public class AdddressBookTest
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         List<Contact> addressBookContactList = addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
         Assertions.assertEquals(8,addressBookContactList.size());
+    }
+
+    @Test
+    public void givenNewMobileNumberForEmployee_WhenUpdated_ShouldSyncWithDB()
+    {
+        AddressBookSystem addressBookService = new AddressBookSystem();
+        List<Contact> personList = addressBookService.readAddressBookData(AddressBookSystem.IOService.DB_IO);
+        addressBookService.updateMobileNumber("Prajakta","7083261675");
+        boolean result = addressBookService.checkAddressBookInSyncWithDB("Prajakta");
+        Assertions.assertTrue(result);
     }
 }
