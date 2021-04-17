@@ -1,6 +1,7 @@
 package com.adddressbook;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,4 +141,11 @@ public class AddressBookDBSystem
         String sql = String.format("SELECT * FROM address_book_service WHERE state =  '%s';", state);
         return this.getAddressBookDataUsingDB(sql);
     }
+
+    public List<Contact> getAddressBookForDateRange(LocalDate startDate, LocalDate endDate)
+    {
+        String sql = String.format("SELECT * FROM address_book_service WHERE entry_date BETWEEN '%s' AND '%s';", Date.valueOf(startDate), Date.valueOf(endDate));
+        return this.getAddressBookDataUsingDB(sql);
+    }
+
 }

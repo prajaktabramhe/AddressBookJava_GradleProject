@@ -1,5 +1,6 @@
 package com.adddressbook;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AddressBookSystem
@@ -61,5 +62,11 @@ public class AddressBookSystem
     public List<Contact> countPeopleFromGivenState(IOService ioService, String state)
     {
         return addressBookDBSystem.countPeopleFromGivenState(state);
+    }
+    public List<Contact> readAddressBookForDateRange(IOService ioService, LocalDate startDate, LocalDate endDate)
+    {
+        if(ioService.equals(IOService.DB_IO))
+            return addressBookDBSystem.getAddressBookForDateRange(startDate, endDate);
+        return null;
     }
 }
