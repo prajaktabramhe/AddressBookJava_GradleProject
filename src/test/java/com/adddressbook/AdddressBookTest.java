@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -307,6 +308,15 @@ public class AdddressBookTest
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         List<Contact> addressBookDataList =
                 addressBookSystem.countPeopleFromGivenState(AddressBookSystem.IOService.DB_IO, "UP");
+        Assertions.assertEquals(2, addressBookDataList.size());
+    }
+    @Test
+    public void givenDateRangeWhenRetrieved_ShouldMatchEntryCount() {
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        LocalDate startDate = LocalDate.of(2020, 12, 01);
+        LocalDate endDate = LocalDate.now();
+        List<Contact> addressBookDataList = addressBookSystem.readAddressBookForDateRange(AddressBookSystem
+                        .IOService.DB_IO, startDate, endDate);
         Assertions.assertEquals(2, addressBookDataList.size());
     }
 }
