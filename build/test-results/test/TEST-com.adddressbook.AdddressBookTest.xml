@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-15T20:21:00" hostname="DESKTOP-0QBG6NF" time="0.356">
+<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-17T16:19:32" hostname="DESKTOP-0QBG6NF" time="0.388">
   <properties/>
-  <testcase name="givenState_WhenRetrieved_ShouldMatchEntryCountBYState()" classname="com.adddressbook.AdddressBookTest" time="0.356"/>
+  <testcase name="givenDateRangeWhenRetrieved_ShouldMatchEntryCount()" classname="com.adddressbook.AdddressBookTest" time="0.388"/>
   <system-out><![CDATA[Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@7972772e
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@32d837a6
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
