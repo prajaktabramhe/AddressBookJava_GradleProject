@@ -148,4 +148,27 @@ public class AddressBookDBSystem
         return this.getAddressBookDataUsingDB(sql);
     }
 
+    public Contact addEntryToPayroll(int id, String firstName, String lastName, String address, String city, String state, String email, String mobileNumber,int zip , LocalDate entryDate) {
+        Contact contact = null;
+        firstName = "'"+firstName+"'";
+        lastName = "'"+lastName+"'";
+        address = "'"+address+"'";
+        city = "'"+city+"'";
+        state = "'"+state+"'";
+        email = "'"+email+"'";
+        mobileNumber = "'"+mobileNumber+"'";
+        zip = zip;
+
+        String date = "'"+entryDate.toString()+"'";
+        String sql = "INSERT INTO address_book_service VALUES ("+firstName+","+lastName+","+address+","+city+","+state+","+zip+","+mobileNumber+","+email+","+date+");";
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            System.out.println("Record Added");
+            contact = new Contact(id, firstName, lastName, address, city, state,  email,  mobileNumber,zip,entryDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contact;
+    }
 }

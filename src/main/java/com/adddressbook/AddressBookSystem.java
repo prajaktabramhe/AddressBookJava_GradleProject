@@ -63,10 +63,46 @@ public class AddressBookSystem
     {
         return addressBookDBSystem.countPeopleFromGivenState(state);
     }
+
     public List<Contact> readAddressBookForDateRange(IOService ioService, LocalDate startDate, LocalDate endDate)
     {
         if(ioService.equals(IOService.DB_IO))
             return addressBookDBSystem.getAddressBookForDateRange(startDate, endDate);
         return null;
+    }
+
+    public void addEmployeeToAddressBook(int id, String firstName, String lastName, String address, String city, String state, String email, String mobileNumber, int zip, LocalDate entryDate)
+    {
+        addressBookContactlist.add(addressBookDBSystem.addEntryToPayroll(id, firstName, lastName, address, city, state,  email, mobileNumber,zip, entryDate));
+    }
+    public boolean checkNameInDatabase(int id)
+    {
+        boolean status = false;
+        for (Contact person : addressBookContactlist)
+        {
+            if (person.getId() == id)
+            {
+                status = true;
+            }
+        }
+        return status;
+    }
+    public void addMultipleRecordsToAddressBook(List<Contact> List)
+    {
+        List.forEach(person -> {
+            System.out.println("Person Being Added: " + person.getFirstName());
+            this.addEmployeeToAddressBook(person.getId(),
+                    person.getFirstName(),
+                    person.getLastName(),
+                    person.getAddress(),
+                    person.getCity(),
+                    person.getState(),
+                    person.getEmail(),
+                    person.getMobileNo(),
+                    person.getZip(),
+                    person.getEntryDate());
+            System.out.println("Person Added: " + person.getFirstName());
+            //System.out.println(personList);
+        });
     }
 }
