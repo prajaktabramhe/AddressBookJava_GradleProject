@@ -4,80 +4,81 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class AdddressBookTest
-{
+public class AdddressBookTest {
     ArrayList<Contact> contact = new ArrayList<>();
 
     @Test
-    public void whenPersonContactDetails_IsAdded_ShouldReturn_True()
-    {
+    public void whenPersonContactDetails_IsAdded_ShouldReturn_True() {
         Contact contact1 = new Contact
                 (
-                   "Prajakta",
-                   "Bramhe" ,
-                   "Ashtyavinayak colony",
-                   "Nagpur" ,
-                   "Maharashtra",
-                   "prajakta@gmail.com",
-                   "8149240833",
-                   440034
-               );
+                        "Prajakta",
+                        "Bramhe",
+                        "Ashtyavinayak colony",
+                        "Nagpur",
+                        "Maharashtra",
+                        "prajakta@gmail.com",
+                        "8149240833",
+                        440034
+                );
 
         Contact contact2 = new Contact
                 (
-                    "Payal",
-                    "Raut" ,
-                    "om colony",
-                    "Pune" ,
-                    "Maharashtra",
-                    "payal@gmail.com",
-                    "8149240833",
-                    440034
+                        "Payal",
+                        "Raut",
+                        "om colony",
+                        "Pune",
+                        "Maharashtra",
+                        "payal@gmail.com",
+                        "8149240833",
+                        440034
 
-               );
+                );
 
         Contact contact3 = new Contact
                 (
-                    "Ekta",
-                    "Sharma" ,
-                    "ram colony",
-                    "bhopal" ,
-                    "UP",
-                    "ekta@gmail.com",
-                    "8149420833",
-                    448800
+                        "Ekta",
+                        "Sharma",
+                        "ram colony",
+                        "bhopal",
+                        "UP",
+                        "ekta@gmail.com",
+                        "8149420833",
+                        448800
 
                 );
 
         Contact contact4 = new Contact
                 (
-                    "Puja",
-                    "Thakre" ,
-                    "Gopal colony",
-                    "Amravati" ,
-                    "MP",
-                    "Puja@gmail.com",
-                    "9149240833",
-                    778899
+                        "Puja",
+                        "Thakre",
+                        "Gopal colony",
+                        "Amravati",
+                        "MP",
+                        "Puja@gmail.com",
+                        "9149240833",
+                        778899
 
-               );
+                );
 
         Contact contact5 = new Contact
                 (
-                    "Sneha",
-                    "Shende" ,
-                    "Ashtyavinayak colony",
-                    "Akola" ,
-                    "Telangana",
-                    "sneha@gmail.com",
-                    "8149240844",
-                    885522
+                        "Sneha",
+                        "Shende",
+                        "Ashtyavinayak colony",
+                        "Akola",
+                        "Telangana",
+                        "sneha@gmail.com",
+                        "8149240844",
+                        885522
 
-               );
+                );
 
         AdddressBookIO addressBook = new AdddressBookIO();
         contact.add(contact1);
@@ -169,8 +170,7 @@ public class AdddressBookTest
     }
 
     @Test
-    public void givenCSVFile_WhenRead_ShouldReturn_True() throws IOException
-    {
+    public void givenCSVFile_WhenRead_ShouldReturn_True() throws IOException {
         OpenCSVFile openCSVReader = new OpenCSVFile();
         Boolean result = openCSVReader.readCSV();
         Assertions.assertTrue(result);
@@ -178,21 +178,20 @@ public class AdddressBookTest
 
 
     @Test
-    public void givenCSVFile_WhenWritten_ShouldReturn_True() throws IOException
-    {
+    public void givenCSVFile_WhenWritten_ShouldReturn_True() throws IOException {
         String ADDRESS_BOOK_CSV_FILE_PATH = ".src/test/resources/AddressBook.csv";
         List<String[]> contacts = new ArrayList<>();
         String[] contact1 =
                 {
-                "Prajakta",
-                "Bramhe",
-                "Ashtyavinayak colony",
-                "Nagpur",
-                "Maharashtra",
-                "prajakta@gmail.com",
-                "8149240733",
-                "698574"
-    };
+                        "Prajakta",
+                        "Bramhe",
+                        "Ashtyavinayak colony",
+                        "Nagpur",
+                        "Maharashtra",
+                        "prajakta@gmail.com",
+                        "8149240733",
+                        "698574"
+                };
 
         String[] contact2 = {
                 "Arun",
@@ -241,27 +240,26 @@ public class AdddressBookTest
         contacts.add(contact3);
         contacts.add(contact4);
         contacts.add(contact5);
-        OpenCSVFile  openCSVReader = new OpenCSVFile();
+        OpenCSVFile openCSVReader = new OpenCSVFile();
         Boolean result = openCSVReader.writeCSV(contacts);
         Assertions.assertTrue(result);
     }
 
 
     @Test
-    public void givenObject_WhenStoredInTheJson_ShouldReturn_TRUE()
-    {
-       Contact contactinfo = new Contact
-               (
-                     "Prajakta",
-                    "Bramhe",
-                    "Ashtyavinayak colony",
-                    "Nagpur",
-                    "Maharashtra",
-                    "prajakta14bramhe@gmail.com",
-                   "8149240833",
-                       440034
+    public void givenObject_WhenStoredInTheJson_ShouldReturn_TRUE() {
+        Contact contactinfo = new Contact
+                (
+                        "Prajakta",
+                        "Bramhe",
+                        "Ashtyavinayak colony",
+                        "Nagpur",
+                        "Maharashtra",
+                        "prajakta14bramhe@gmail.com",
+                        "8149240833",
+                        440034
 
-               );
+                );
 
         JsonFile jsonfile = new JsonFile();
         boolean isAdded = jsonfile.jsonWriteData(contactinfo);
@@ -269,54 +267,74 @@ public class AdddressBookTest
     }
 
     @Test
-    public void givenJsonFile_WhenReadData_ShouldReturn_TRUE()
-    {
+    public void givenJsonFile_WhenReadData_ShouldReturn_TRUE() {
         JsonFile jsonfile = new JsonFile();
         boolean isRead = jsonfile.jsonReadData();
         Assertions.assertTrue(isRead);
     }
 
     @Test
-    public void givenAddressBookContactsInDB_WhenRetrieved_ShouldMatchContactsCount()
-    {
+    public void givenAddressBookContactsInDB_WhenRetrieved_ShouldMatchContactsCount() {
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         List<Contact> addressBookContactList = addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
-        Assertions.assertEquals(8,addressBookContactList.size());
+        Assertions.assertEquals(8, addressBookContactList.size());
     }
 
     @Test
-    public void givenNewMobileNumberForEmployee_WhenUpdated_ShouldSyncWithDB()
-    {
+    public void givenNewMobileNumberForEmployee_WhenUpdated_ShouldSyncWithDB() {
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         List<Contact> personList = addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
-        addressBookSystem.updateMobileNumber("Prajakta","7083261675");
+        addressBookSystem.updateMobileNumber("Prajakta", "7083261675");
         boolean result = addressBookSystem.checkAddressBookInSyncWithDB("Prajakta");
         Assertions.assertTrue(result);
     }
 
     @Test
-    public void givenState_WhenRetrieved_ShouldMatchEntryCount()
-    {
+    public void givenState_WhenRetrieved_ShouldMatchEntryCount() {
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         List<Contact> addressBookDataList =
                 addressBookSystem.countPeopleFromGivenCity(AddressBookSystem.IOService.DB_IO, "Nagpur");
         Assertions.assertEquals(2, addressBookDataList.size());
     }
+
     @Test
-    public void givenState_WhenRetrieved_ShouldMatchEntryCountBYState()
-    {
+    public void givenState_WhenRetrieved_ShouldMatchEntryCountBYState() {
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         List<Contact> addressBookDataList =
                 addressBookSystem.countPeopleFromGivenState(AddressBookSystem.IOService.DB_IO, "UP");
         Assertions.assertEquals(2, addressBookDataList.size());
     }
+
     @Test
     public void givenDateRangeWhenRetrieved_ShouldMatchEntryCount() {
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         LocalDate startDate = LocalDate.of(2020, 12, 01);
         LocalDate endDate = LocalDate.now();
         List<Contact> addressBookDataList = addressBookSystem.readAddressBookForDateRange(AddressBookSystem
-                        .IOService.DB_IO, startDate, endDate);
+                .IOService.DB_IO, startDate, endDate);
         Assertions.assertEquals(2, addressBookDataList.size());
+    }
+
+    @Test
+    public void given4Entries_WhenAdded_ShouldGetAdded()
+    {
+        Contact[] arrayOfContactOne = {
+                new Contact(7,"raj", "Gupta",
+                        "Sadar Bazar", "Satara", "Maharashtra", "rajgupta@gmail.com", "1234567890", 445522, LocalDate.now()),
+                new Contact(8,"vishva", "wadhai",
+                        "Sadar Bazar", "Satara", "Gujrat", "vishwawadhai@gmail.com", "7777456321", 556633, LocalDate.now()),
+                new Contact(9,"puja", "lapkale",
+                        "Sadar Bazar", "Satara", "Odisha", "pujalapkale@gmail.com", "5566223311", 133211, LocalDate.now()),
+                new Contact(10,"shilpa", "Thakre",
+                        "Sadar Bazar", "Satara", "Karnataka", "shilpa14thakre@gmail.com", "7777777777", 332266, LocalDate.now()),
+        };
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
+        Instant start = Instant.now();
+        addressBookSystem.addMultipleRecordsToAddressBook(Arrays.asList(arrayOfContactOne));
+        Instant end = Instant.now();
+        System.out.println("Duration without Thread: " + Duration.between(start, end));
+        boolean status = addressBookSystem.checkNameInDatabase(10);
+        Assertions.assertTrue(status);
     }
 }
