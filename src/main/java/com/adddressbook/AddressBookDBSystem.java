@@ -148,7 +148,9 @@ public class AddressBookDBSystem
         return this.getAddressBookDataUsingDB(sql);
     }
 
+
     public Contact addEntryToPayroll( int id, String firstName, String lastName, String address, String city, String state, int zip, String mobileNumber,  String email, LocalDate entryDate) {
+
         Contact contact = null;
         firstName = "'"+firstName+"'";
         lastName = "'"+lastName+"'";
@@ -165,7 +167,9 @@ public class AddressBookDBSystem
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("Record Added");
-            contact = new Contact( id, firstName, lastName, address, city, state,  zip,  mobileNumber,email,entryDate);
+
+            contact = new Contact(id, firstName, lastName, address, city, state, zip,  mobileNumber, email, entryDate);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

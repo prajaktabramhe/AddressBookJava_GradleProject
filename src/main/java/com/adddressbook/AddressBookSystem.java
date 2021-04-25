@@ -73,9 +73,11 @@ public class AddressBookSystem
         return null;
     }
 
+
     public void addEmployeeToAddressBook( int id, String firstName, String lastName, String address, String city, String state, int zip, String mobileNumber,  String email, LocalDate entryDate)
     {
         addressBookContactlist.add(addressBookDBSystem.addEntryToPayroll(id, firstName, lastName, address, city, state,zip, mobileNumber, email, entryDate));
+
     }
     public boolean checkNameInDatabase(int id)
     {
@@ -110,5 +112,40 @@ public class AddressBookSystem
         });
     }
 
+
+    public void addMultipleRecordsUsingThreadToAddressBook(List<Contact> List)
+    {
+        Map<Integer, Boolean> personAdditionStatus = new HashMap<>();
+        List.forEach(person -> {
+            Runnable task = () -> {
+                personAdditionStatus.put(person.hashCode(), false);
+                System.out.println("Person Being Added: " + Thread.currentThread().getName());
+                this.addEmployeeToAddressBook(person.getId(),
+                        person.getFirstName(),
+                        person.getLastName(),
+                        person.getAddress(),
+                        person.getCity(),
+                        person.getState(),
+                        person.getZip(),
+                        person.getMobileNo(),
+                        person.getEmail(),
+                        person.getEntryDate());
+                personAdditionStatus.put(person.hashCode(), true);
+                System.out.println("Person Added: " + Thread.currentThread().getName());
+            };
+            Thread thread = new Thread(task, person.firstName);
+            thread.start();
+        });
+        while (personAdditionStatus.containsValue(false))
+        {
+            try
+            {
+                Thread.sleep(10);
+            } catch (InterruptedException e)
+            {
+
+            }
+        }
+    }
 
 }

@@ -42,7 +42,9 @@ public class Contact
         this.entryDate = entryDate;
 
     }
+
     public Contact(int id, String firstName, String lastName, String address, String city, String state, int zip, String mobileNo, String email, LocalDate entryDate)
+
     {
         this.id = id;
         this.firstName = firstName;

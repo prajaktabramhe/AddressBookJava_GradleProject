@@ -328,6 +328,7 @@ public class AdddressBookTest {
                         "Sadar Bazar", "Satara", "Odisha",133211, "5566223311","pujalapkale@gmail.com",  LocalDate.now()),
                 new Contact(10,"shilpa", "Thakre",
                         "Sadar Bazar", "Satara", "Karnataka", 332266, "7777777777", "shilpa14thakre@gmail.com", LocalDate.now()),
+
         };
         AddressBookSystem addressBookSystem = new AddressBookSystem();
         addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
@@ -338,6 +339,46 @@ public class AdddressBookTest {
         boolean status = addressBookSystem.checkNameInDatabase(10);
         Assertions.assertTrue(status);
     }
+
+
+    @Test
+    public void given4Entries_WhenAdded_ShouldGetAddedUsingThread()
+    {
+        Contact[] arrayOfPersonsOne =
+                {
+                        new Contact(7,"Prajakta", "Bramhe",
+                                "Ashtyavinayak colony","Nagpur", "Maharashtra", 440034,"8149240833", "prajakta@gmail.com",LocalDate.now()),
+                        new Contact(8,"Ajinkya", "Bond",
+                                "Sadar Bazar","Satara", "Maharashtra", 415001,"8149240844", "ajinkyabond@gmail.com",LocalDate.now()),
+                        new Contact(9,"Harry", "Bond",
+                                "Sadar Bazar","Satara", "Maharashtra",415001, "8149240855","bondjamesbond@gmail.com", LocalDate.now()),
+                        new Contact(10,"James", "Bond",
+                                "Sadar Bazar","Satara", "Maharashtra",415001,"8149240866", "bondjamesbond@gmail.com",LocalDate.now()),
+                };
+        Contact[] arrayOfPersonsTwo =
+                {
+                        new Contact(11,"Prajakta", "Bramhe",
+                                "Ashtyavinayak colony","Nagpur", "Maharashtra", 440034,"8149240833", "prajakta@gmail.com",LocalDate.now()),
+                        new Contact(12,"Ajinkya", "Bond",
+                                "Sadar Bazar","Satara", "Maharashtra", 415001,"8149240844", "ajinkyabond@gmail.com",LocalDate.now()),
+                };
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        addressBookSystem.readAddressBookData(AddressBookSystem.IOService.DB_IO);
+
+        Instant start = Instant.now();
+        addressBookSystem.addMultipleRecordsToAddressBook(Arrays.asList(arrayOfPersonsOne));
+        Instant end = Instant.now();
+        System.out.println("Duration without Thread: " + Duration.between(start,end));
+        System.out.println();
+
+        Instant startForThread = Instant.now();
+        addressBookSystem.addMultipleRecordsUsingThreadToAddressBook(Arrays.asList(arrayOfPersonsTwo));
+        Instant endForThread = Instant.now();
+        System.out.println("Duration with Thread: " + Duration.between(startForThread,endForThread));
+        boolean status = addressBookSystem.checkNameInDatabase(10);
+        Assertions.assertTrue(status);
+    }
+
 
 
 }
