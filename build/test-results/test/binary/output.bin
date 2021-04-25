@@ -1,28 +1,26 @@
 VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@3d11d65f
-Person Being Added: Prajakta
+DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@3a50aaab
+Person Being Added: raj
 VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@2d8b2497
+DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@25b3735a
 Record Added
-Person Added: Prajakta
-Person Being Added: Ajinkya
+Person Added: raj
+Person Being Added: vishva
 VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@1e300da4
+DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@6a6b33e2
 Record Added
-Person Added: Ajinkya
-Person Being Added: Harry
+Person Added: vishva
+Person Being Added: puja
 VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-CConnection is successful!!!com.mysql.jdbc.JDBC4Connection@7069109
+DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@1945e2a8
 Record Added
-Person Added: Harry
-Person Being Added: James
+Person Added: puja
+Person Being Added: shilpa
 VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-CConnection is successful!!!com.mysql.jdbc.JDBC4Connection@ff647d7
+DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@3cb56c40
 Record Added
-Person Added: James
-"Duration without Thread: PT0.46S
-
-Duration with Thread: PT0S
+Person Added: shilpa
+#Duration without Thread: PT0.657S
 0
 0
 0
@@ -31,13 +29,7 @@
 0
 0
 0
-Person Being Added: Ajinkya
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Person Being Added: Prajakta
 7
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
 8
 9
 10
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@2559fdb1
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@38317694

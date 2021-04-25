@@ -110,38 +110,5 @@ public class AddressBookSystem
         });
     }
 
-    public void addMultipleRecordsUsingThreadToAddressBook(List<Contact> List)
-    {
-        Map<Integer, Boolean> personAdditionStatus = new HashMap<>();
-        List.forEach(person -> {
-            Runnable task = () -> {
-                personAdditionStatus.put(person.hashCode(), false);
-                System.out.println("Person Being Added: " + Thread.currentThread().getName());
-                this.addEmployeeToAddressBook(person.getId(),
-                        person.getFirstName(),
-                        person.getLastName(),
-                        person.getAddress(),
-                        person.getCity(),
-                        person.getState(),
-                        person.getZip(),
-                        person.getMobileNo(),
-                        person.getEmail(),
-                        person.getEntryDate());
-                personAdditionStatus.put(person.hashCode(), true);
-                System.out.println("Person Added: " + Thread.currentThread().getName());
-            };
-            Thread thread = new Thread(task, person.firstName);
-            thread.start();
-        });
-        while (personAdditionStatus.containsValue(false))
-        {
-            try
-            {
-                Thread.sleep(10);
-            } catch (InterruptedException e)
-            {
 
-            }
-        }
-    }
 }

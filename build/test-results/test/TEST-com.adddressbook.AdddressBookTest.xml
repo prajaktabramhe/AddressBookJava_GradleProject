@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-25T09:02:09" hostname="DESKTOP-0QBG6NF" time="0.782">
+<testsuite name="com.adddressbook.AdddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-25T10:43:27" hostname="DESKTOP-0QBG6NF" time="1.248">
   <properties/>
-  <testcase name="given4Entries_WhenAdded_ShouldGetAddedUsingThread()" classname="com.adddressbook.AdddressBookTest" time="0.782"/>
+  <testcase name="given4Entries_WhenAdded_ShouldGetAdded()" classname="com.adddressbook.AdddressBookTest" time="1.248"/>
   <system-out><![CDATA[Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@3d11d65f
-Person Being Added: Prajakta
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@3a50aaab
+Person Being Added: raj
 Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@2d8b2497
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@25b3735a
 Record Added
-Person Added: Prajakta
-Person Being Added: Ajinkya
+Person Added: raj
+Person Being Added: vishva
 Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@1e300da4
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@6a6b33e2
 Record Added
-Person Added: Ajinkya
-Person Being Added: Harry
+Person Added: vishva
+Person Being Added: puja
 Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@7069109
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@1945e2a8
 Record Added
-Person Added: Harry
-Person Being Added: James
+Person Added: puja
+Person Being Added: shilpa
 Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@ff647d7
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@3cb56c40
 Record Added
-Person Added: James
-Duration without Thread: PT0.46S
-
-Duration with Thread: PT0S
+Person Added: shilpa
+Duration without Thread: PT0.657S
 0
 0
 0
@@ -35,16 +33,10 @@ Duration with Thread: PT0S
 0
 0
 0
-Person Being Added: Ajinkya
-Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-Person Being Added: Prajakta
 7
-Connecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
 8
 9
 10
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@2559fdb1
-Connection is successful!!!com.mysql.jdbc.JDBC4Connection@38317694
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
