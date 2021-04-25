@@ -160,7 +160,7 @@ public class AddressBookDBSystem
         zip = zip;
 
         String date = "'"+entryDate.toString()+"'";
-        String sql = "INSERT INTO address_book_service VALUES ("+firstName+","+lastName+","+address+","+city+","+state+","+zip+","+mobileNumber+","+email+","+date+");";
+        String sql = "INSERT INTO address_book VALUES ("+id+","+firstName+","+lastName+","+address+","+city+","+state+","+zip+","+mobileNumber+","+email+","+date+");";
         try (Connection connection = this.getConnection()) {
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
