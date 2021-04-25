@@ -42,7 +42,7 @@ public class Contact
         this.entryDate = entryDate;
 
     }
-    public Contact(int id, String firstName, String lastName, String address, String city, String state, String email, String mobileNo, int zip, LocalDate entryDate)
+    public Contact(int id, String firstName, String lastName, String address, String city, String state, int zip, String mobileNo, String email, LocalDate entryDate)
     {
         this.id = id;
         this.firstName = firstName;
@@ -50,9 +50,9 @@ public class Contact
         this.address= address;
         this.city = city;
         this.state = state;
-        this.email = email;
-        this.mobileNo = mobileNo;
         this.zip = zip;
+        this.mobileNo = mobileNo;
+        this.email = email;
         this.entryDate = entryDate;
 
     }
