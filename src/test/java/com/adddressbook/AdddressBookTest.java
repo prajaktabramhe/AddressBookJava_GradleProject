@@ -1,5 +1,11 @@
 package com.adddressbook;
 
+
+import com.google.gson.Gson;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -379,6 +385,63 @@ public class AdddressBookTest {
         Assertions.assertTrue(status);
     }
 
+    @Before
+    public void setup() {
+        RestAssured.baseURI = "http://localhost";
+        RestAssured.port = 3000;
+    }
 
+    public Contact[] getPersonList()
+    {
+        setup();
+        Response response = RestAssured.get("/address_book_service");
+        System.out.println("PERSON DATA IN JSON Server :\n" + response.asString());
+        Contact[] arrayOfPersons = new Gson().fromJson(response.asString(), Contact[].class);
+        return arrayOfPersons;
+    }
 
+    @Test
+    public void givenPersonDataInJSONServerWhenRetrivedShouldMatchTheCount()
+    {
+        Contact[] arrayOfPersons = getPersonList();
+        AddressBookSystem addressBookSystem;
+        addressBookSystem = new AddressBookSystem(Arrays.asList(arrayOfPersons));
+        long entries = addressBookSystem.countEntries(AddressBookSystem.IOService.REST_IO);
+        Assertions.assertEquals(2, entries);
+    }
+
+    private Response addPersonToJsonServer(Contact person)
+    {
+        String personJson = new Gson().toJson(person);
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header("Content-Type", "application/json");
+        requestSpecification.body(personJson);
+        return requestSpecification.post("/address_book_service");
+    }
+
+    @Test
+    public void givenListOfNewPersonsWhenAddedShouldMatchResponse201AndCount()
+    {
+        List<Contact> list = new ArrayList<>();
+        Contact[] arrayOfPersons = getPersonList();
+        System.out.println(arrayOfPersons);
+        AddressBookSystem addressBookSystem;
+        addressBookSystem = new AddressBookSystem(Arrays.asList(arrayOfPersons));
+        Contact[] arrayOfPersonData = {
+                new Contact(3, "Monali", "Kadu", "Vishrambaug", "Sangli", "Maharashtra", 414414, "7083261167", "monalikadu12@gmail.com", LocalDate.now()),
+                new Contact(4, "Roshan", "Valvi", "Mangrul", "Nandurbar", "Maharashtra", 414415, "7083261548", "roshanvalvi@gmail.com", LocalDate.now())
+        };
+        for(Contact person : arrayOfPersonData)
+        {
+            Response response = addPersonToJsonServer(person);
+            int statusCode = response.getStatusCode();
+            Assertions.assertEquals(201, statusCode);
+            person = new Gson().fromJson(response.asString(), Contact.class);
+            System.out.println(person.toString());
+            addressBookSystem.addEmployeeToAddressBook(person, AddressBookSystem.IOService.REST_IO);
+        }
+        long entries = addressBookSystem.countEntries(AddressBookSystem.IOService.REST_IO);
+
+        Assertions. assertEquals(4, entries);
+    }
 }

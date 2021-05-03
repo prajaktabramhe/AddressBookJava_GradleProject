@@ -1,15 +1,16 @@
 package com.adddressbook;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AddressBookSystem
 {
-    public enum IOService{DB_IO}
-
-    private List<Contact> addressBookContactlist;
+    public enum IOService {DB_IO,REST_IO,FILE_IO}
+    List<Contact> addressBookContactList;
+    List<Contact> newAddressBookContactlist = new ArrayList<>();
     private AddressBookDBSystem addressBookDBSystem;
 
     public AddressBookSystem()
@@ -21,13 +22,13 @@ public class AddressBookSystem
     public AddressBookSystem(List<Contact> addressBookContactList)
     {
         this();
-        this.addressBookContactlist=addressBookContactList;
+        this.addressBookContactList=addressBookContactList;
     }
 
     public List<Contact> readAddressBookData(IOService ioService){
         if(ioService.equals( IOService.DB_IO ))
-            this.addressBookContactlist =  addressBookDBSystem.readData();
-        return this.addressBookContactlist;
+            this.addressBookContactList =  addressBookDBSystem.readData();
+        return this.addressBookContactList;
     }
 
 
@@ -41,7 +42,7 @@ public class AddressBookSystem
 
     private Contact getAddressBookData(String firstName)
     {
-        return this.addressBookContactlist.stream()
+        return this.addressBookContactList.stream()
                 .filter(addressBookDataItem -> addressBookDataItem.firstName.equals(firstName))
                 .findFirst()
                 .orElse(null);
@@ -54,7 +55,7 @@ public class AddressBookSystem
 
     private Contact getEmployeePayrollData(String name)
     {
-        return this.addressBookContactlist.stream().filter(employeePayrollDataItem -> employeePayrollDataItem.firstName.equals(name)).findFirst().orElse(null);
+        return this.addressBookContactList.stream().filter(employeePayrollDataItem -> employeePayrollDataItem.firstName.equals(name)).findFirst().orElse(null);
     }
     public List<Contact> countPeopleFromGivenCity(IOService ioService, String city)
     {
@@ -76,14 +77,14 @@ public class AddressBookSystem
 
     public void addEmployeeToAddressBook( int id, String firstName, String lastName, String address, String city, String state, int zip, String mobileNumber,  String email, LocalDate entryDate)
     {
-        addressBookContactlist.add(addressBookDBSystem.addEntryToPayroll(id, firstName, lastName, address, city, state,zip, mobileNumber, email, entryDate));
+        addressBookContactList.add(addressBookDBSystem.addEntryToPayroll(id, firstName, lastName, address, city, state,zip, mobileNumber, email, entryDate));
 
     }
     public boolean checkNameInDatabase(int id)
     {
         boolean status = false;
 
-        for (Contact person : addressBookContactlist)
+        for (Contact person : addressBookContactList)
         {
             System.out.println(person.getId());
             if (person.getId() == id)
@@ -147,5 +148,18 @@ public class AddressBookSystem
             }
         }
     }
+    public long countEntries(IOService ioService)
+    {
+        //if (ioService.equals(IOService.FILE_IO))
+        //    return new AddressBookFileIOService().countEntries();
+        return newAddressBookContactlist.size();
+    }
 
+    public void addEmployeeToAddressBook(Contact person, IOService ioService) {
+        if (ioService.equals(IOService.DB_IO)) {
+            this.addEmployeeToAddressBook(person.id, person.firstName, person.lastName, person.address, person.city, person.state, person.zip, person.mobileNo, person.email, person.entryDate);
+        } else {
+            newAddressBookContactlist.add(person);
+        }
+    }
 }
