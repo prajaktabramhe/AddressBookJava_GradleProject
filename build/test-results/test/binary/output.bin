@@ -1,43 +1,0 @@
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@3d11d65f
-Person Being Added: Prajakta
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@2d8b2497
-Record Added
-Person Added: Prajakta
-Person Being Added: Ajinkya
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@1e300da4
-Record Added
-Person Added: Ajinkya
-Person Being Added: Harry
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-CConnection is successful!!!com.mysql.jdbc.JDBC4Connection@7069109
-Record Added
-Person Added: Harry
-Person Being Added: James
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-CConnection is successful!!!com.mysql.jdbc.JDBC4Connection@ff647d7
-Record Added
-Person Added: James
-#Duration without Thread: PT0.642S
-
-Duration with Thread: PT0S
-0
-Person Being Added: Prajakta
-Person Being Added: Ajinkya
-0
-0
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-VConnecting to database:jdbc:mysql://localhost:3306/address_book_service?useSSL=false
-0
-0
-0
-0
-0
-7
-8
-9
-10
-DConnection is successful!!!com.mysql.jdbc.JDBC4Connection@2adcd463
-CConnection is successful!!!com.mysql.jdbc.JDBC4Connection@890ef94
