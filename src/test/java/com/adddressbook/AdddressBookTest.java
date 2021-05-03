@@ -444,4 +444,23 @@ public class AdddressBookTest {
 
         Assertions. assertEquals(4, entries);
     }
+
+    @Test
+    public void givenNewContactNumberForPersonWhenUpdatedShouldMatch200Response()
+    {
+        Contact[] arrayOfPersons = getPersonList();
+        AddressBookSystem addressBookSystem;
+        addressBookSystem = new AddressBookSystem(Arrays.asList(arrayOfPersons));
+
+        addressBookSystem.updateMobileNumber("Prajakta", "9503836038", AddressBookSystem.IOService.REST_IO);
+        Contact person = addressBookSystem.getAddressBookData("Prajakta");
+
+        String personJson = new Gson().toJson(person);
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header("Content-Type", "application/json");
+        requestSpecification.body(personJson);
+        Response response = requestSpecification.put("/address_book_service/" +person.id);
+        int statusCode = response.getStatusCode();
+        Assertions.assertEquals(200, statusCode);
+    }
 }
