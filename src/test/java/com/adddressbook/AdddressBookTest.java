@@ -1,5 +1,9 @@
 package com.adddressbook;
 
+import com.google.gson.Gson;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -379,6 +383,30 @@ public class AdddressBookTest {
         Assertions.assertTrue(status);
     }
 
+    @Before
+    public void setup() {
+        RestAssured.baseURI = "http://localhost";
+        RestAssured.port = 3000;
+    }
+
+    public Contact[] getPersonList()
+    {
+        setup();
+        Response response = RestAssured.get("/address_book_service");
+        System.out.println("PERSON DATA IN JSON Server :\n" + response.asString());
+        Contact[] arrayOfPersons = new Gson().fromJson(response.asString(), Contact[].class);
+        return arrayOfPersons;
+    }
+
+    @Test
+    public void givenPersonDataInJSONServerWhenRetrivedShouldMatchTheCount()
+    {
+        Contact[] arrayOfPersons = getPersonList();
+        AddressBookSystem addressBookSystem;
+        addressBookSystem = new AddressBookSystem(Arrays.asList(arrayOfPersons));
+        long entries = addressBookSystem.countEntries(AddressBookSystem.IOService.REST_IO);
+        Assertions.assertEquals(2, entries);
+    }
 
 
 }
