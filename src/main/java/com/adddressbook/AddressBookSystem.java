@@ -7,7 +7,8 @@ import java.util.Map;
 
 public class AddressBookSystem
 {
-    public enum IOService{DB_IO}
+    public enum IOService {DB_IO,REST_IO,FILE_IO}
+
 
     private List<Contact> addressBookContactlist;
     private AddressBookDBSystem addressBookDBSystem;
@@ -147,5 +148,10 @@ public class AddressBookSystem
             }
         }
     }
-
+    public long countEntries(IOService ioService)
+    {
+        //if (ioService.equals(IOService.FILE_IO))
+        //    return new AddressBookFileIOService().countEntries();
+        return addressBookContactlist.size();
+    }
 }
